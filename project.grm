@@ -1,0 +1,99 @@
+!---------------------------------------------------------
+"Name"          = 'SamaSam'
+"Author"        = 'Sama Muhamed Ibrahim'
+"Case Sensitive" = false
+"Start Symbol" = <program>
+!---------------------------------------------------------Terminals
+ID = {letter}{Alphanumeric}*
+Integer = {Digit}+        
+Float = {Digit}+ '.' {Digit}+
+
+!---------------------------------------------------------Non-Treminals
+<program> ::= Start  '{' <contant> '}'     End
+          
+<contant> ::= <assigment> <statmentlist>
+           | <declaration> <statmentlist>
+           | for '(' <foras> ';' <exp> ';' <forincdec> ')' '{' <statmentlist> '}'
+           | while '(' <exp> ')' '{' <statmentlist> '}'
+           | switch '(' ID ')' '{' case Integer ':' <statmentlist> '}'
+           | if '(' <exp> ')' '{' <statmentlist> '}' 
+           | if '(' <exp> ')' '{' <statmentlist> '}' elsif '(' <exp> ')' '{' <statmentlist> '}'
+           
+           
+           
+           
+
+
+<assigment> ::=  ID ';'
+
+            
+<declaration> ::= ID '=' Integer ';'
+               | ID '=' Float ';'
+               
+               
+<foras> ::= auto ID '=' Integer 
+         | ID '=' Integer 
+         | ID 
+         
+           
+<forincdec> ::= ID'++'
+             | ID'--'
+             | '++'ID
+             | '--'ID
+             | ID '+=' Integer
+             | ID '-=' Integer
+             | ID '*=' Integer
+             | ID '/=' Integer
+             | ID '=' ID '+' Integer
+             | ID '=' ID '-' Integer
+             | ID '=' ID '*' Integer
+             | ID '=' ID '/' Integer
+             
+<exp> ::= ID '<=' Integer
+          | ID '>=' Integer
+          | ID '>' Integer
+          | ID '<' Integer
+          | ID '!=' Integer
+          | 'true'
+          | '!false' 
+           
+<statmentlist> ::=  <contant> <statmentlist>
+                | <add> <statmentlist>
+                | <sub> <statmentlist>
+                | <div> <statmentlist>
+                | <mul> <statmentlist>
+                |
+             
+<add> ::= ID '=' ID '+' Integer 
+       | ID '+=' Integer 
+       | ID '=' ID '+' ID
+       
+
+<sub> ::= ID '=' ID '-' Integer
+       | ID '-=' Integer
+       | ID '=' ID '-' ID
+       
+<div> ::= ID '=' ID '/' Integer
+       | ID '/=' Integer
+       | ID '=' ID '/' ID
+       
+<mul> ::= ID '=' ID '*' Integer
+       | ID '*=' Integer
+       | ID '=' ID '*' ID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
